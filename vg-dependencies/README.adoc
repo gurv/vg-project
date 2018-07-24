@@ -1,0 +1,7 @@
+= Зависимости
+
+* Формирование и публикация BOM-файлв
+
+```
+gradle vg-dependencies:publishBomPublicationToMavenLocal
+```

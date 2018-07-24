@@ -1,0 +1,83 @@
+plugins {
+    id "io.spring.dependency-management" version "1.0.6.RELEASE"
+}
+
+group = 'ru.gurv.vg'
+version = '0.0.1'
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url "https://repo.spring.io/milestone" }
+    maven { url 'http://repo.spring.io/plugins-release' }
+    maven { url "https://plugins.gradle.org/m2" }
+    mavenLocal()
+}
+
+project(':vg-dependencies') {
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'maven-publish'
+
+    ext {
+        springBootVersion = '2.0.3.RELEASE'
+        springCloudVersion = 'Finchley.RC1'
+        springSecurityVersion = '5.0.6.RELEASE'
+        springSecurityOAuthVersion = '2.3.3.RELEASE'
+        springSecurityJwtVersion = '1.0.9.RELEASE'
+        springCloudDataflowVersion = '1.5.1.RELEASE'
+        springCloudSkipperVersion = '1.0.4.RELEASE'
+        springfoxVersion = '2.9.2'
+        micrometerVersion = '1.0.5'
+        groovyVersion = '2.4.7'
+    }
+
+    configurations {
+        bom
+        bomImport
+    }
+
+    dependencies {
+        bomImport "org.springframework.boot:spring-boot-dependencies:${project.springBootVersion}"
+        bomImport "org.springframework.cloud:spring-cloud-dependencies:$project.springCloudVersion"
+        bomImport "org.springframework.security:spring-security-bom:$project.springSecurityVersion"
+        bom "org.springframework.cloud:spring-cloud-skipper-server:$project.springCloudSkipperVersion"
+        bom "org.springframework.cloud:spring-cloud-skipper-shell:$project.springCloudSkipperVersion"
+        bom "org.springframework.cloud:spring-cloud-starter-dataflow-server-local:$project.springCloudDataflowVersion"
+        bom "org.springframework.cloud:spring-cloud-dataflow-server-local:$project.springCloudDataflowVersion"
+        bom "org.springframework.cloud:spring-cloud-dataflow-shell:$project.springCloudDataflowVersion"
+        bom "org.springframework.security.oauth:spring-security-oauth2:$project.springSecurityOAuthVersion"
+        bom "org.springframework.security:spring-security-jwt:$project.springSecurityJwtVersion"
+        bom "io.springfox:springfox-swagger-ui:$project.springfoxVersion"
+        bom "io.springfox:springfox-swagger2:$project.springfoxVersion"
+        bom "io.micrometer:micrometer-registry-prometheus:$project.micrometerVersion"
+        bom "org.codehaus.groovy:groovy-all:$project.groovyVersion"
+    }
+
+    publishing {
+        publications {
+            bom(MavenPublication) {
+                groupId = rootProject.group
+                artifactId = project.name
+                version = rootProject.version
+                pom.withXml {
+                    def dependencies = asNode().dependencyManagement.dependencies[0]
+                    configurations.bomImport.dependencies.each {
+                        def dependency = dependencies.appendNode('dependency')
+                        dependency.appendNode('groupId', it.group)
+                        dependency.appendNode('artifactId', it.name)
+                        dependency.appendNode('version', it.version)
+                        dependency.appendNode('type', 'pom')
+                        dependency.appendNode('scope', 'import')
+                    }
+                    configurations.bom.dependencies.each {
+                        def dependency = dependencies.appendNode('dependency')
+                        dependency.appendNode('groupId', it.group)
+                        dependency.appendNode('artifactId', it.name)
+                        dependency.appendNode('version', it.version)
+                    }
+                }
+            }
+        }
+    }
+}
