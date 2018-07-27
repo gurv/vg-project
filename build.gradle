@@ -34,6 +34,10 @@ project(':vg-dependencies') {
         springfoxVersion = '2.9.2'
         micrometerVersion = '1.0.5'
         groovyVersion = '2.4.7'
+        //TODO на 20180727 уже есть версия 1.18.2, в которой исправлена ошибка с Gradle 4.9
+        // (https://github.com/rzwitserloot/lombok/issues/1716)
+        // , но ее еще нет в Maven Central
+        lombookVersion = '1.16.20'
     }
 
     configurations {
@@ -57,6 +61,7 @@ project(':vg-dependencies') {
         bom "io.micrometer:micrometer-spring-legacy:$project.micrometerVersion"
         bom "io.micrometer:micrometer-registry-prometheus:$project.micrometerVersion"
         bom "org.codehaus.groovy:groovy-all:$project.groovyVersion"
+        bom "org.projectlombok:lombok:$project.lombookVersion"
 
         //TODO https://github.com/bmuschko/gradle-docker-plugin/issues/467#issuecomment-353865846
         bom 'com.github.docker-java:docker-java:3.1.0-rc-2'
