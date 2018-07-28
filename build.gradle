@@ -34,10 +34,7 @@ project(':vg-dependencies') {
         springfoxVersion = '2.9.2'
         micrometerVersion = '1.0.5'
         groovyVersion = '2.4.7'
-        //TODO на 20180727 уже есть версия 1.18.2, в которой исправлена ошибка с Gradle 4.9
-        // (https://github.com/rzwitserloot/lombok/issues/1716)
-        // , но ее еще нет в Maven Central
-        lombookVersion = '1.16.20'
+        lombookVersion = '1.18.2'
         avroVersion = '1.8.2'
     }
 
