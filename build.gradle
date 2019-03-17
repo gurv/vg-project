@@ -3,11 +3,11 @@ plugins {
     id "org.sonarqube" version "2.6.2" apply false
 }
 
-group = 'ru.gurv.vg'
+group = 'io.github.gurv'
 version = '0.1.0'
 
 ext {
-    bomVersion = '0.4.0-SNAPSHOT'
+    bomVersion = '0.1.0-SNAPSHOT'
 }
 
 repositories {
@@ -24,6 +24,7 @@ project(':vg-dependencies') {
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'maven-publish'
     apply plugin: 'org.sonarqube'
+    apply plugin: 'signing'
 
     ext {
         springBootVersion = '2.0.3.RELEASE'
@@ -76,6 +77,29 @@ project(':vg-dependencies') {
                 groupId = rootProject.group
                 artifactId = project.name
                 version = rootProject.bomVersion
+                pom {
+                    name = 'VG dependencies'
+                    description = 'Java dependencies'
+                    url = 'https://gurv.github.io/vg-doc/index.html'
+                    licenses {
+                        license {
+                            name = 'MIT License'
+                            url = 'hhttp://www.opensource.org/licenses/mit-license.php'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'gurv'
+                            name = 'Vladimir Gurinovich'
+                            email = 'vladimir.gurinovich@gmail.com'
+                        }
+                    }
+                    scm {
+                        connection = 'scm:git:git://github.com/gurv/vg-project.git'
+                        developerConnection = 'scm:git:ssh://github.com/gurv/vg-project.git'
+                        url = 'http://github.com/gurv/vg-project'
+                    }
+                }
                 pom.withXml {
                     def dependencies = asNode().dependencyManagement.dependencies[0]
                     configurations.bomImport.dependencies.each {
