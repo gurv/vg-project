@@ -122,12 +122,12 @@ project(':vg-dependencies') {
         repositories {
             maven {
                 name = 'ci'
-                def releasesRepoUrl = "http://nexus:8081/repository/maven-releases/"
-                def snapshotsRepoUrl = "http://nexus:8081/repository/maven-snapshots/"
+                def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+                def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
                 url = rootProject.bomVersion.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
                 credentials {
-                    username 'admin'
-                    password 'admin123'
+                    username System.env.CI_DEPLOY_USERNAME
+                    password System.env.CI_DEPLOY_PASSWORD
                 }
             }
         }
