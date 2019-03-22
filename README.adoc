@@ -1,1 +1,7 @@
 = Проект
+
+На GitHub Pages: https://gurv.github.io/vg-doc/index.html
+
+CI: https://travis-ci.org/gurv[сборки]
+
+Заявка в oss.sonatype.org: https://issues.sonatype.org/browse/OSSRH-47035
