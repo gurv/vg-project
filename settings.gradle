@@ -9,5 +9,3 @@ pluginManagement {
 rootProject.name = 'vg-project'
 
 include 'vg-dependencies'
-
-enableFeaturePreview('STABLE_PUBLISHING')
