@@ -34,6 +34,7 @@ project(':vg-dependencies') {
         springSecurityJwtVersion = '1.0.9.RELEASE'
         springCloudDataflowVersion = '1.5.1.RELEASE'
         springCloudSkipperVersion = '1.0.4.RELEASE'
+        springCloudStreamVersion = 'Fishtown.RELEASE'
         springfoxVersion = '2.9.2'
         micrometerVersion = '1.0.5'
         groovyVersion = '2.4.7'
@@ -49,6 +50,7 @@ project(':vg-dependencies') {
     dependencies {
         bomImport "org.springframework.boot:spring-boot-dependencies:${project.springBootVersion}"
         bomImport "org.springframework.cloud:spring-cloud-dependencies:$project.springCloudVersion"
+        bomImport "org.springframework.cloud:spring-cloud-stream-dependencies:$project.springCloudStreamVersion"
         bomImport "org.springframework.security:spring-security-bom:$project.springSecurityVersion"
         bom "org.springframework.cloud:spring-cloud-skipper-server:$project.springCloudSkipperVersion"
         bom "org.springframework.cloud:spring-cloud-skipper-shell:$project.springCloudSkipperVersion"
