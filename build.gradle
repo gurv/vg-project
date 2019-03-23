@@ -66,11 +66,6 @@ project(':vg-dependencies') {
         bom "org.codehaus.groovy:groovy-all:$project.groovyVersion"
         bom "org.projectlombok:lombok:$project.lombookVersion"
         bom "org.apache.avro:avro:$project.avroVersion"
-
-        //TODO https://github.com/bmuschko/gradle-docker-plugin/issues/467#issuecomment-353865846
-        bom 'com.github.docker-java:docker-java:3.1.0-rc-2'
-        bom 'org.slf4j:slf4j-simple:1.7.5'
-        bom 'cglib:cglib:3.2.0'
     }
 
     publishing {
