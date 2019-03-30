@@ -3,10 +3,13 @@ install: true
 jdk: oraclejdk8
 script: ./gradlew publish
 before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-  - rm -fr $HOME/.gradle/caches/*/scripts/
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+- rm -fr $HOME/.gradle/caches/*/scripts/
 cache:
   directories:
-    - "$HOME/.gradle/caches/"
-    - "$HOME/.gradle/wrapper/"
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+notifications:
+  slack:
+    secure: EYeeiZmt/yDzPrX3Natauo9H6Sx5HPZ1Of8AVP1gtEolerZg8iCzzEeRYasNnLkFlPMYQkmWRAOaVzk0yVVowRyvcTq2mbh23c2f7Wee/F843uj5K6G8Tg9s11C2hibWqK+14PQu6C9eDDHwNhZYoM4FL+rTo4CQBG0yrb9wTpj74I12jES+W23mAGUapr2xVKzlMNtYLk2d7MX38hoBJtcqYODR8IxJ+Mb9kub8O7OH1IgNksiAlOiLJkO4A2l10ENqWVB/gVW88UTUh9MFNWjRTCucc+0JbVUWIR5u9iHAqD0Rc9WYxTqoRwl7Zx/jdmQdTMRFZwAsukraT9kvc3HXExtygDJiLrnWG4uARdMOASQvYEZZld89qvPxx4LTyP2VbOQrpSZtfvLHoaRVzmQs5k7R0xHb4v1CeVFcNRSL3Os6Qh7JAzdep7UWV+b+/CxT4RMAAA2lrlqZ7Rhj85a/SxKjk96v7wi2/wJnZAU+jOVBq1jP7SOFhuCIqPXQ2NcjtlZx1nO6a8JPAQBvl0nOpsG8Fo8m3pWtOR4nzqYROZFV91R2ZCyAyUFzhBltj+E0yV6P7HfAYAjl7iaCKjDIzG6ir3WAgTveRm05HYUfDVO2SwhIPy/c9QNrxJtAc+KuQYjUuF9I6+f9xrfsJIyrzTQthbuorgZ7Uysdvac=
