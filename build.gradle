@@ -45,6 +45,7 @@ project(':vg-dependencies') {
         springSecurityOAuthVersion = '2.3.6.RELEASE'
         springSecurityJwtVersion = '1.0.10.RELEASE'
         springCloudDataflowVersion = '2.2.1.RELEASE'
+        springCloudDataflowServerLocalVersion = '1.7.4.RELEASE'
         springCloudSkipperVersion = '2.1.2.RELEASE'
         springCloudStreamVersion = 'Germantown.RELEASE'
         springfoxVersion = '2.9.2'
@@ -65,12 +66,12 @@ project(':vg-dependencies') {
         bomImport "org.springframework.boot:spring-boot-dependencies:${project.springBootVersion}"
         bomImport "org.springframework.cloud:spring-cloud-dependencies:$project.springCloudVersion"
         bomImport "org.springframework.cloud:spring-cloud-stream-dependencies:$project.springCloudStreamVersion"
+        bomImport "org.springframework.cloud:spring-cloud-dataflow-dependencies:$project.springCloudDataflowVersion"
         bomImport "org.springframework.security:spring-security-bom:$project.springSecurityVersion"
         bom "org.springframework.cloud:spring-cloud-skipper-server:$project.springCloudSkipperVersion"
         bom "org.springframework.cloud:spring-cloud-skipper-shell:$project.springCloudSkipperVersion"
-        bom "org.springframework.cloud:spring-cloud-starter-dataflow-server-local:$project.springCloudDataflowVersion"
-        bom "org.springframework.cloud:spring-cloud-dataflow-server-local:$project.springCloudDataflowVersion"
-        bom "org.springframework.cloud:spring-cloud-dataflow-shell:$project.springCloudDataflowVersion"
+        bom "org.springframework.cloud:spring-cloud-starter-dataflow-server-local:$project.springCloudDataflowServerLocalVersion"
+        bom "org.springframework.cloud:spring-cloud-dataflow-server-local:$project.springCloudDataflowServerLocalVersion"
         bom "org.springframework.security.oauth:spring-security-oauth2:$project.springSecurityOAuthVersion"
         bom "org.springframework.security:spring-security-jwt:$project.springSecurityJwtVersion"
         bom "io.springfox:springfox-swagger-ui:$project.springfoxVersion"
