@@ -6,5 +6,6 @@ image:https://img.shields.io/github/contributors/gurv/vg-project.svg[Contributor
 image:https://img.shields.io/github/commit-activity/m/gurv/vg-project.svg[Activity,link=https://github.com/gurv/vg-project/pulse]
 image:https://img.shields.io/github/repo-size/gurv/vg-project.svg[repo size]
 image:https://dev.azure.com/gurv/vg/_apis/build/status/notebook?branchName=master[Build Status]
+image:https://github.com/gurv/vg-project/workflows/ci/badge.svg[GitHub CI]
 
 * https://gurv.github.io/vg-doc/index.html[Documentation]
