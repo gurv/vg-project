@@ -148,7 +148,7 @@ project(':vg-dependencies') {
                 name = 'github'
                 url = "https://maven.pkg.github.com/gurv/vg-project"
                 credentials {
-                    username 'gurv'
+                    username System.env.GITHUB_USERNAME
                     password System.env.GITHUB_TOKEN
                 }
             }
