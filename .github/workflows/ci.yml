@@ -10,7 +10,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
-    - name: Build
+    - name: Gradle Build
       run: |
         ./gradlew build
     # FIXME "Could not GET 'https://maven.pkg.github.com/gurv/vg-project/io/github/gurv/vg-dependencies/0.2.0-SNAPSHOT/maven-metadata.xml'. Received status code 400 from server: Bad Request"
