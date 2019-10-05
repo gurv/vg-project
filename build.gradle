@@ -144,6 +144,14 @@ project(':vg-dependencies') {
                     password System.env.CI_DEPLOY_PASSWORD
                 }
             }
+            maven {
+                name = 'github'
+                url = "https://maven.pkg.github.com/gurv/vg-project"
+                credentials {
+                    username 'gurv'
+                    password System.env.GITHUB_TOKEN
+                }
+            }
         }
     }
 }
