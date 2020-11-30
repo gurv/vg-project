@@ -1,0 +1,44 @@
+name: Release
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+    # FIXME "Could not GET 'https://maven.pkg.github.com/gurv/vg-project/io/github/gurv/vg-dependencies/0.2.0-SNAPSHOT/maven-metadata.xml'. Received status code 400 from server: Bad Request"
+    #       Эта ошибка описана здесь: https://stackoverflow.com/questions/57711558/deploy-to-github-package-registry-from-github-action
+    #         "Lastly, I confirm that this only works for non-SNAPSHOT artifacts. When I try deploying a SNAPSHOT version it fails with a 400 error as described."
+    #       Проявляется на SNAPSHOT-версиях, ожидаю ее исправления
+    # - name: Publish
+    #   env:
+    #     GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   run: |
+    #     ./gradlew publishBomPublicationToGithubRepository
+    - name: Publish
+      run: ./gradlew publish
+      env:
+        SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+        SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+        GITHUB_USERNAME: gurv
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Slack
+      if: always()
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        fields: repo,message,workflow,job
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    - name: Telegram
+      uses: appleboy/telegram-action@master
+      if: always()
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        args: ${{ github.repository }} ${{ github.workflow }} ${{ github.job }} ${{ job.status }}

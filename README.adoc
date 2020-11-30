@@ -1,11 +1,9 @@
 = Project VG
 
-image:https://img.shields.io/travis/gurv/vg-project/master.svg[Build Status (Travis CI),link=https://travis-ci.org/gurv/vg-project]
+image:https://github.com/gurv/vg-core/workflows/CI/badge.svg[build]
 image:https://sonarcloud.io/api/project_badges/measure?project=io.github.gurv:vg-project&metric=alert_status[Sonarcloud Status,link=https://sonarcloud.io/dashboard?id=io.github.gurv%3Avg-project]
 image:https://img.shields.io/github/contributors/gurv/vg-project.svg[Contributors,link=https://github.com/gurv/vg-project/graphs/contributors]
 image:https://img.shields.io/github/commit-activity/m/gurv/vg-project.svg[Activity,link=https://github.com/gurv/vg-project/pulse]
 image:https://img.shields.io/github/repo-size/gurv/vg-project.svg[repo size]
-image:https://dev.azure.com/gurv/vg/_apis/build/status/notebook?branchName=master[Build Status]
-image:https://github.com/gurv/vg-project/workflows/ci/badge.svg[GitHub CI]
 
 * https://gurv.github.io/vg-doc/index.html[Documentation]
